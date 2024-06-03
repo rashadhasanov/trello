@@ -35,6 +35,7 @@ function createColumn() {
     const cardText = document.createElement("div");
     cardText.className = "text";
     cardText.textContent = input.value;
+    cardText.style.marginBottom = "10px";
 
     const btnContainer = document.createElement("div");
     btnContainer.className = "card-btn-container";
@@ -69,13 +70,13 @@ function createColumn() {
 
     closeInput();
 
-
     addCardBtn.addEventListener("click", () => {
       const inputContainer2 = document.createElement("div");
       inputContainer2.className = "input-container";
 
       const input2 = document.createElement("input");
       input2.className = "input";
+      input2.placeholder = "add project";
 
       const btnContainer2 = document.createElement("div");
       btnContainer2.className = "btn-container";
@@ -115,9 +116,9 @@ function createColumn() {
           function saatGoster() {
             let indi = new Date();
             let saat = indi.getHours();
-            let dakika = indi.getMinutes();
-            let saniye = indi.getSeconds();
-            return `${saat}:${dakika}:${saniye}`;
+            let dakika = indi.getMinutes().toString();
+            let saniye = indi.getSeconds().toString();
+            return `${saat}:${dakika.padStart(2, 0)}:${saniye.padStart(2, 0)}`;
           }
 
           const time = document.createElement("span");
@@ -163,4 +164,3 @@ function createColumn() {
     input.value = "";
   }
 }
-
