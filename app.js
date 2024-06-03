@@ -147,8 +147,9 @@ function createColumn() {
             draggedElement = null;
           }
 
-          removeColumnBtn.addEventListener("click", () => {
-            const dragContainers = document.querySelectorAll(".drag-container");
+          removeColumnBtn.addEventListener("click", function (event) {
+            const column = event.target.closest(".card");
+            const dragContainers = column.querySelectorAll(".drag-container");
             dragContainers.forEach((dragContainer) => {
               dragContainer.remove();
             });
