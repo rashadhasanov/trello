@@ -56,13 +56,17 @@ function createColumn() {
 
     container.insertBefore(card, addListContainer);
 
+    removeColumnBtn.addEventListener("click", function (event) {
+      const column = event.target.closest(".card");
+      column.remove();
+    });
+
     function onDragOver(event) {
       event.preventDefault();
     }
 
     function onDrop(event) {
       event.currentTarget.insertBefore(draggedElement, card.lastElementChild);
-      console.log(event.currentTarget);
     }
 
     card.addEventListener("drop", onDrop);
@@ -109,6 +113,7 @@ function createColumn() {
           const dragElementDiv = document.createElement("div");
           dragElementDiv.className = "drag-container";
           dragElementDiv.draggable = "true";
+          dragElementDiv.style.cursor = "grab";
 
           const dragElementText = document.createElement("p");
           dragElementText.textContent = input2.value;
@@ -147,13 +152,7 @@ function createColumn() {
             draggedElement = null;
           }
 
-          removeColumnBtn.addEventListener("click", function (event) {
-            const column = event.target.closest(".card");
-            const dragContainers = column.querySelectorAll(".drag-container");
-            dragContainers.forEach((dragContainer) => {
-              dragContainer.remove();
-            });
-          });
+         
 
           removeBtn.addEventListener("click", () => {
             removeBtn.parentElement.remove();
